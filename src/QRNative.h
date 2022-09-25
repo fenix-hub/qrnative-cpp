@@ -11,12 +11,12 @@
 
 #include <godot_cpp/classes/image.hpp>
 
-#include "zxing-cpp/ReadBarcode.h"
-#include "zxing-cpp/Result.h"
-#include "zxing-cpp/qrcode/QRWriter.h"
-#include "zxing-cpp/BitMatrix.h"
-#include "zxing-cpp/CharacterSet.h"
-#include "zxing-cpp/TextUtfEncoding.h"
+#include "zxing-cpp/core/src/ReadBarcode.h"
+#include "zxing-cpp/core/src/Result.h"
+#include "zxing-cpp/core/src/qrcode/QRWriter.h"
+#include "zxing-cpp/core/src/BitMatrix.h"
+#include "zxing-cpp/core/src/CharacterSet.h"
+#include "zxing-cpp/core/src/TextUtfEncoding.h"
 
 #include "qrdecoderesult.h"
 

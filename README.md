@@ -55,15 +55,15 @@ scons target=debug
 After compiling the extension succesfully, you can now use the `QRNative` class inside Godot :tada:
 ```gdscript
 func _ready() -> void:
-	# Decoding
-	var qr_code: Image = load("res://qrcode.png")
-	var qr_decode_result: QRDecodeResult = QRNative.decode_image(qr_code)
-	if qr_decode_result.is_valid():
-		print(qr_decode_result.get_content())
-	
-	# Encoding
-	var qr_content: String = "This is the content of my QR Code!"
-	var qr_code_en: Image = QRNative.encode_string(qr_content, 100, 100, 10)
-	$QRCode.set_texture(ImageTexture.create_from_image(qr_code_en))
+    # Decoding
+    var qr: Image = Image.load_from_file("res://qrcode.png")
+    var qr_decode_result: QRDecodeResult = QRNative.decode_image(qr) as QRDecodeResult
+    if qr_decode_result.is_valid():
+        print(qr_decode_result.get_content())
+    
+    # Encoding
+    var qr_content: String = "This is the content of my QR Code!"
+    var qr_code: Image = QRNative.encode_string(qr_content, 100, 100, 5) as Image
+    $QRCode.set_texture(ImageTexture.create_from_image(qr_code))
 ```
 

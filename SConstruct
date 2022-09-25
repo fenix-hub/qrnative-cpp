@@ -11,15 +11,17 @@ extension_name = "libqrnative"
 
 
 # Set up sources
+excluded_sources = ['example', 'test', 'thirdparty', 'wrappers']
+
 def add_sources(sources, dir, extension):
     for f in os.listdir(dir):
         if f.endswith("." + extension):
             sources.append(dir + "/" + f)
-        elif os.path.isdir(dir + "/" + f):
+        elif os.path.isdir(dir + "/" + f) and f not in excluded_sources:
             add_sources(sources, dir + "/" + f, extension)
 
 qrnative_path = "src/"
-zxing_path = qrnative_path + "zxing-cpp/"
+zxing_path = qrnative_path + "zxing-cpp/core/src/"
 
 env.Append(CPPDEFINES=["ZXING_BUILD_READERS", "ZXING_BUILD_WRITERS"]) # Required to compile Readers and Writers
 env.Append(CPPPATH=[zxing_path])

@@ -4,3 +4,6 @@
 	branch = master
 
 
+[submodule "src/zxing-cpp"]
+	path = src/zxing-cpp
+	url = https://github.com/PXLVision/zxing-cpp
