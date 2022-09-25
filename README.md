@@ -1,6 +1,6 @@
 # QRNative
 
-///
+Godot Engine 4.x GDExtension module exposing interfaces to encode and decode QRCodes in GDScript.
 
 ## Contributing
 If you can't compile the extension, please open an issue with the error log in your terminal and/or the error log in the editor (if you can't run the example scene).
