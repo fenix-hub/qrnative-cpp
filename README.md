@@ -2,10 +2,20 @@
 
 Godot Engine 4.x GDExtension module exposing interfaces to encode and decode QRCodes in GDScript.
 
-## Contributing
-If you can't compile the extension, please open an issue with the error log in your terminal and/or the error log in the editor (if you can't run the example scene).
-
-PRs for improvements are very welcome!
+## Usage
+```gdscript
+func _ready() -> void:
+    # Decoding
+    var qr: Image = Image.load_from_file("res://qrcode.png")
+    var qr_decode_result: QRDecodeResult = QRNative.decode_image(qr)
+    if qr_decode_result.is_valid():
+        print(qr_decode_result.get_content())
+    
+    # Encoding
+    var qr_content: String = "This is the content of my QR Code!"
+    var qr_code: Image = QRNative.encode_string(qr_content, 100, 100, 5)
+    $QRCode.set_texture(ImageTexture.create_from_image(qr_code))
+```
 
 ## Getting started / Building the extension
 
@@ -51,19 +61,6 @@ cd ..
 scons target=debug
 ```
 
-## Using the extension
-After compiling the extension succesfully, you can now use the `QRNative` class inside Godot :tada:
-```gdscript
-func _ready() -> void:
-    # Decoding
-    var qr: Image = Image.load_from_file("res://qrcode.png")
-    var qr_decode_result: QRDecodeResult = QRNative.decode_image(qr) as QRDecodeResult
-    if qr_decode_result.is_valid():
-        print(qr_decode_result.get_content())
-    
-    # Encoding
-    var qr_content: String = "This is the content of my QR Code!"
-    var qr_code: Image = QRNative.encode_string(qr_content, 100, 100, 5) as Image
-    $QRCode.set_texture(ImageTexture.create_from_image(qr_code))
-```
-
+## Resources
+- [GDSummatorExample](https://github.com/paddy-exe/GDExtensionSummator) by @paddy-exe  
+- [GDExtension](https://github.com/nathanfranke/gdextension) by @nathanfranke
