@@ -26,8 +26,6 @@ For the initial build you can run the vscode task `initial-build-extension`. Thi
 
 To compile the extension you need to follow these steps:
 
-0. Click on the green "Use this template" button to generate the repository for you
-
 1. Clone the extension recursively from this repository
 ```bash
 # --recursive to automatically load the submodule godot-cpp
