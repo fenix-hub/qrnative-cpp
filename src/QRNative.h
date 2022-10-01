@@ -40,8 +40,8 @@ public:
     QRDecodeResult* decode_bytes(PackedByteArray image_data, int image_width, int image_height);
     QRDecodeResult* decode_image(Ref<godot::Image> image);
 
-    godot::Image* encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
-    godot::Image* encode_string(const String &content, int image_width, int image_height, int margin);
+    Ref<godot::Image> encode_string(const String &content, int image_width, int image_height, int margin);
+    Ref<godot::Image> encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
 };
 
 #endif // QRRADER_H

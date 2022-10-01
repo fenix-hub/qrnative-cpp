@@ -2,6 +2,7 @@
 .godot/
 .sconsign*.dblite
 *.import
+project/extensions/
 
 # Binaries
 *.o
