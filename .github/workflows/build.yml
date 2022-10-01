@@ -93,7 +93,7 @@ jobs:
         shell: sh
         run: |
           scons target='${{ matrix.target }}' platform='${{ matrix.platform }}' arch='${{ matrix.arch }}' -j2
-          ls -l project/extensions/*/
+          ls -l project/addons/*/
 
       # - name: Copy extra files to addon
       #   shell: sh
