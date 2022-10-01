@@ -4,6 +4,7 @@
 *.import
 
 # Binaries
+bin
 *.o
 *.os
 *.so
@@ -13,7 +14,6 @@
 *.dblite
 *.pdb
 *.lib
-bin
 *.config
 *.creator
 *.creator.user
