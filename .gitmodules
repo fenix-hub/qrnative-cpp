@@ -1,9 +1,0 @@
-[submodule "godot-cpp"]
-	path = godot-cpp
-	url = https://github.com/godotengine/godot-cpp.git
-	branch = master
-
-
-[submodule "src/zxing-cpp"]
-	path = src/zxing-cpp
-	url = https://github.com/PXLVision/zxing-cpp
