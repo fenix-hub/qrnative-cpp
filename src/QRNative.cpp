@@ -61,14 +61,17 @@ QRDecodeResult* QRNative::decode_image(Ref<godot::Image> image)
     return decode_bytes(image->get_data(), image->get_width(), image->get_height());
 }
 
-godot::Image* QRNative::encode_string(const String &content, int image_width, int image_height, int margin)
+Ref<godot::Image> QRNative::encode_string(const String &content, int image_width, int image_height, int margin)
 {
     ZXing::QRCode::Writer writer = ZXing::QRCode::Writer();
     writer.setEncoding(CharacterSet::UTF8).setMargin(margin);
     Matrix matrix = ToMatrix<uint8_t>(
         writer.encode(std::wstring(content.wide_string().get_data()), image_width, image_height)
     );
-    godot::Image* image = (godot::Image*) memnew(godot::Image());
+
+    Ref<godot::Image> image;
+    image.instantiate();
+    // godot::Image* image = (godot::Image*) memnew(godot::Image());
     
     image->create(matrix.width(), matrix.height(), false, godot::Image::FORMAT_RGB8);
     for (int i = 0; i < matrix.width(); i++)
@@ -83,7 +86,7 @@ godot::Image* QRNative::encode_string(const String &content, int image_width, in
     return image;
 }
 
-godot::Image* QRNative::encode_bytes(PackedByteArray content, int image_width, int image_height, int margin)
+Ref<godot::Image> QRNative::encode_bytes(PackedByteArray content, int image_width, int image_height, int margin)
 {
     return encode_string(content.get_string_from_utf8(), image_width, image_height, margin);
 }

@@ -5,8 +5,8 @@ import sys
 env = SConscript("godot-cpp/SConstruct")
 
 # Set up target
-target_project = "project/extension/"
-extension_path = "qrnative/" + env["platform"]
+target_project = "project/addons/"
+extension_path = "qrnative/bin/" + env["platform"]
 extension_name = "libqrnative"
 
 
@@ -25,6 +25,7 @@ zxing_path = qrnative_path + "zxing-cpp/core/src/"
 
 env.Append(CPPDEFINES=["ZXING_BUILD_READERS", "ZXING_BUILD_WRITERS"]) # Required to compile Readers and Writers
 env.Append(CPPPATH=[zxing_path])
+env.Append(CCFLAGS=['-O3'])
 sources = []
 add_sources(sources, qrnative_path, "cpp")
 
