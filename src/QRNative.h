@@ -18,7 +18,7 @@
 #include "zxing-cpp/core/src/CharacterSet.h"
 #include "zxing-cpp/core/src/TextUtfEncoding.h"
 
-#include "qrdecoderesult.h"
+#include "QRDecodeResult.h"
 
 using namespace godot;
 
