@@ -5,8 +5,8 @@ import sys
 env = SConscript("godot-cpp/SConstruct")
 
 # Set up target
-target_project = "project/extensions/"
-extension_path = "qrnative/" + env["platform"]
+target_project = "project/addons/"
+extension_path = "qrnative/bin/" + env["platform"]
 extension_name = "libqrnative"
 
 
