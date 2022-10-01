@@ -2,7 +2,6 @@
 .godot/
 .sconsign*.dblite
 *.import
-bin/
 
 # Binaries
 *.o
