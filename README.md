@@ -1,6 +1,6 @@
-# QRNative
+# QRNative C++
 
-Godot Engine 4.x GDExtension module exposing interfaces to encode and decode QRCodes in GDScript.
+C++ Source Code for Godot Engine 4.x GDExtension module exposing interfaces to encode and decode QRCodes in GDScript.
 
 ## Usage
 ```gdscript
