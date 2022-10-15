@@ -60,18 +60,6 @@ jobs:
             target: template_release
             platform: windows
             arch: x86_64
-          - identifier: android-debug_arm64
-            name: Android Debug (arm64)
-            runner: ubuntu-20.04
-            target: template_debug
-            platform: android
-            arch: arm64
-          - identifier: android-release_arm64
-            name: Android Release (arm64)
-            runner: ubuntu-20.04
-            target: template_release
-            platform: android
-            arch: arm64
           - identifier: android-debug_arm32
             name: Android Debug (arm32)
             runner: ubuntu-20.04
@@ -84,12 +72,25 @@ jobs:
             target: template_release
             platform: android
             arch: arm32
+          - identifier: android-debug_arm64
+            name: Android Debug (arm64)
+            runner: ubuntu-20.04
+            target: template_debug
+            platform: android
+            arch: arm64
+          - identifier: android-release_arm64
+            name: Android Release (arm64)
+            runner: ubuntu-20.04
+            target: template_release
+            platform: android
+            arch: arm64
 
     steps:
-      - name: (Windows) Install mingw64
+      - name: (Windows) Install mingw
         if: ${{ startsWith(matrix.identifier, 'windows-') }}
         shell: sh
         run: |
+          sudo apt-get install mingw-w32
           sudo apt-get install mingw-w64
           sudo update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix
           sudo update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix
