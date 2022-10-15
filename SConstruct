@@ -50,7 +50,7 @@ else:
             extension_name,
             env["platform"],
             env["target"],
-            env["arch_suffix"],
+            env["arch"],
             env["SHLIBSUFFIX"],
         ),
         source=sources,
