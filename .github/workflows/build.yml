@@ -1,8 +1,8 @@
 name: 🛠️ Compile QRNative
 on:
   push:
-  pull_request:
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   build:
