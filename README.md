@@ -46,7 +46,7 @@ cd godot-cpp
 
 4. Compile godot-cpp and generate bindings (only need to do this once when starting development or when there is an update of the submodule)
 ```bash
-scons target=debug generate_bindings=yes
+scons #by default will use your target and template_debug
 ```
 
 5. Go back to the top level of the directory
@@ -56,7 +56,7 @@ cd ..
 
 6. Compile the extension
 ```bash
-scons target=debug
+scons
 ```
 
 ## Resources
