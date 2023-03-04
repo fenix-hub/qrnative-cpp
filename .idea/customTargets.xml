@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="b8d92f34-207b-47ff-ba36-66f299080237" name="Godot Debug" defaultType="TOOL">
+      <configuration id="a515fa3c-e5bf-43a9-894e-84fc24eacf9c" name="Godot Debug">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Build Godot debug" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_Clean Godot build" />
+        </clean>
+      </configuration>
+    </target>
+    <target id="3c8dd81f-7efa-447c-ab3d-8a9d285fb09f" name="QRNative debug" defaultType="TOOL">
+      <configuration id="2a5c14ad-6c8a-47a5-a359-661364d08a77" name="QRNative debug">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Build QRNative debug" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_Clean QRNative build" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>

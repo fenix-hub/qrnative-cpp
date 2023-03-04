@@ -1,8 +1,7 @@
-#pragma once
+#ifndef QRNATIVE_REGISTER_TYPES_H
+#define QRNATIVE_REGISTER_TYPES_H
 
-#include <godot_cpp/core/class_db.hpp>
+void initialize_qrnative();
+void uninitialize_qrnative();
 
-using namespace godot;
-
-void qrnative_initialize(ModuleInitializationLevel p_level);
-void qrnative_terminate(ModuleInitializationLevel p_level);
+#endif

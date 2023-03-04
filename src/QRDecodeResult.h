@@ -7,29 +7,30 @@
 
 #include <godot_cpp/classes/ref.hpp>
 
-using namespace godot;
+namespace godot {
 
-class QRDecodeResult : public RefCounted
-{
-    GDCLASS(QRDecodeResult, RefCounted);
+    class QRDecodeResult : public RefCounted {
+        GDCLASS(QRDecodeResult, RefCounted);
 
-protected:
-    void _init();
-    static void _bind_methods();
+    protected:
+        void _init();
+        static void _bind_methods();
 
-private:
-    bool valid;
-    String content;
+    private:
+        bool valid;
+        String content;
 
-public:
-    QRDecodeResult();
-    QRDecodeResult(bool valid, String content);
-    ~QRDecodeResult();
+    public:
+        QRDecodeResult();
+        QRDecodeResult(bool valid, String content);
+        ~QRDecodeResult();
 
-    void set_valid(bool valid);
-    bool is_valid();
-    void set_content(String content);
-    String get_content();
-};
+        void set_valid(bool valid);
+        bool is_valid();
+        void set_content(String content);
+        String get_content();
+    };
 
-#endif // QRDECODERESULT_H
+}
+
+#endif

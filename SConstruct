@@ -30,7 +30,7 @@ sources = []
 add_sources(sources, qrnative_path, "cpp")
 
 
-# Create the library target (e.g. qrnative/w/libexample.linux.debug.x86_64.so).
+# Create the library target
 if env["platform"] == "macos":
     library = env.SharedLibrary(
         "{0}{1}/{2}.{3}.framework/{2}.{3}.{4}".format(

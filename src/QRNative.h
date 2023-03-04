@@ -1,5 +1,5 @@
-#ifndef QRRADER_H
-#define QRRADER_H
+#ifndef QRNATIVE_H
+#define QRNATIVE_H
 
 #ifdef WIN32
 #include <windows.h>
@@ -20,28 +20,29 @@
 
 #include "QRDecodeResult.h"
 
-using namespace godot;
+namespace godot {
 
-class QRNative : public Object
-{
-    GDCLASS(QRNative, Object);
+    class QRNative : public Object {
+        GDCLASS(QRNative, Object);
+        static QRNative *singleton;
 
-    static QRNative *singleton;
+    protected:
+        static void _bind_methods();
 
-protected:
-    static void _bind_methods();
+    public:
+        static QRNative *get_singleton();
 
-public:
-    static QRNative *get_singleton();
+        QRNative();
+        ~QRNative();
 
-    QRNative();
-    ~QRNative();
+        QRDecodeResult *decode_bytes(PackedByteArray image_data, int image_width, int image_height);
 
-    QRDecodeResult* decode_bytes(PackedByteArray image_data, int image_width, int image_height);
-    QRDecodeResult* decode_image(Ref<godot::Image> image);
+        QRDecodeResult *decode_image(Ref<godot::Image> image);
 
-    Ref<godot::Image> encode_string(const String &content, int image_width, int image_height, int margin);
-    Ref<godot::Image> encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
-};
+        Ref<godot::Image> encode_string(const String &content, int image_width, int image_height, int margin);
 
-#endif // QRRADER_H
+        Ref<godot::Image> encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
+    };
+}
+
+#endif

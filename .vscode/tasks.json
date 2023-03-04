@@ -66,7 +66,7 @@
         {
             "label": "build-extension",
             "type": "shell",
-            "command": "scons target=debug",
+            "command": "scons",
             "presentation": {
                 "echo": true,
                 "revealProblems": "onProblem",
@@ -80,7 +80,7 @@
         {
             "label": "build-extension (release)",
             "type": "shell",
-            "command": "scons target=release",
+            "command": "scons target=template_release",
             "presentation": {
                 "echo": true,
                 "revealProblems": "onProblem",
