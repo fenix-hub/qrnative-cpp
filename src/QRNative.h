@@ -22,26 +22,20 @@
 
 namespace godot {
 
-    class QRNative : public Object {
-        GDCLASS(QRNative, Object);
-        static QRNative *singleton;
+    class QRNative : public RefCounted {
+        GDCLASS(QRNative, RefCounted);
 
     protected:
         static void _bind_methods();
 
     public:
-        static QRNative *get_singleton();
-
         QRNative();
         ~QRNative();
 
-        QRDecodeResult *decode_bytes(PackedByteArray image_data, int image_width, int image_height);
-
-        QRDecodeResult *decode_image(Ref<godot::Image> image);
-
-        Ref<godot::Image> encode_string(const String &content, int image_width, int image_height, int margin);
-
-        Ref<godot::Image> encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
+        static QRDecodeResult* decode_bytes(PackedByteArray image_data, int image_width, int image_height);
+        static QRDecodeResult* decode_image(const Ref<godot::Image> image);
+        static Ref<godot::Image> encode_string(const String &content, int image_width, int image_height, int margin);
+        static Ref<godot::Image> encode_bytes(PackedByteArray content, int image_width, int image_height, int margin);
     };
 }
 

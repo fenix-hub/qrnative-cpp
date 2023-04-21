@@ -4,4 +4,4 @@ entry_symbol = "qrnative_init"
 
 [libraries]
 
-windows.debug.x86_64 = "bin/windows/libqrnative.windows.template_debug.x86_64.dll"
+windows.debug.x86_64 = "res://addons/qrnative/bin/windows/libqrnative.windows.template_debug.x86_64.dll"

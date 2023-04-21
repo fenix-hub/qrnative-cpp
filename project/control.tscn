@@ -11,7 +11,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gi0fv")
 
-[node name="QRCode" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Box" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Decoding" type="HBoxContainer" parent="Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="QRCode" type="TextureRect" parent="Box/Decoding"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Box/Decoding"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "➡️ Decoding ➡"
+
+[node name="text" type="Label" parent="Box/Decoding"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.698039, 0.882353, 1)
+text = "xxxx"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Encoding" type="HBoxContainer" parent="Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="text" type="Label" parent="Box/Encoding"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.698039, 0.882353, 1)
+text = "xxxx"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="Box/Encoding"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "➡️ Encoding ➡"
+
+[node name="QRCode" type="TextureRect" parent="Box/Encoding"]
+layout_mode = 2
