@@ -60,3 +60,18 @@ text = "➡️ Encoding ➡"
 
 [node name="QRCode" type="TextureRect" parent="Box/Encoding"]
 layout_mode = 2
+
+[node name="Realtime" type="HBoxContainer" parent="Box"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Box/Realtime"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="QRCode" type="TextureRect" parent="Box/Realtime"]
+layout_mode = 2
+
+[connection signal="text_changed" from="Box/Realtime/LineEdit" to="." method="_on_line_edit_text_changed"]

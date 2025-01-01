@@ -14,25 +14,28 @@ using namespace godot;
 
 void initialize_qrnative(ModuleInitializationLevel p_level)
 {
-	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
-        ClassDB::register_class<QRDecodeResult>();
-        ClassDB::register_class<QRNative>();
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
+	{
+		GDREGISTER_CLASS(QRNative);
+		GDREGISTER_CLASS(QRDecodeResult);
 
-        UtilityFunctions::print("QRNative lib initialized.");
-    }
+		UtilityFunctions::print("QRNative lib initialized.");
+	}
 }
 
 void uninitialize_qrnative(ModuleInitializationLevel p_level)
 {
-	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
-        return;
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
+	{
+		return;
 	}
 }
 
 extern "C"
 {
-    GDExtensionBool GDE_EXPORT qrnative_init(const GDExtensionInterface *p_interface, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-		godot::GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
+	GDExtensionBool GDE_EXPORT qrnative_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, const GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization)
+	{
+		godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
 
 		init_obj.register_initializer(initialize_qrnative);
 		init_obj.register_terminator(uninitialize_qrnative);

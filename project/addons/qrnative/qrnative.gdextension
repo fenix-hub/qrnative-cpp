@@ -1,6 +1,8 @@
 [configuration]
 
 entry_symbol = "qrnative_init"
+compatibility_minimum = "4.1"
+reloadable = true
 
 [libraries]
 
