@@ -74,5 +74,7 @@
         "xlocmes": "cpp",
         "xthread": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "cmake.configureOnOpen": true,
+    "godotTools.editorPath.godot4": "d:\\Program Files (x86)\\Steam\\steamapps\\common\\Godot Engine\\godot.windows.opt.tools.64.exe"
 }

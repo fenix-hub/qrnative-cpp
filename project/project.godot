@@ -12,5 +12,9 @@ config_version=5
 
 config/name="QRNative Test Project"
 run/main_scene="res://control.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
+
+[debug]
+
+file_logging/enable_file_logging=true

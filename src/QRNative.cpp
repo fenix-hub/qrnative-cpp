@@ -6,39 +6,26 @@
 using namespace godot;
 using namespace ZXing;
 
-QRNative *QRNative::singleton = nullptr;
-
 DecodeHints hints;
-
 
 void QRNative::_bind_methods()
 {
-    ClassDB::bind_method(D_METHOD("decode_bytes", "image_data", "image_width", "image_height"), &QRNative::decode_bytes);
-    ClassDB::bind_method(D_METHOD("decode_image", "image"), &QRNative::decode_image);
-    ClassDB::bind_method(D_METHOD("encode_bytes", "content", "image_width", "image_height", "margin"), &QRNative::encode_bytes);
-    ClassDB::bind_method(D_METHOD("encode_string", "content", "image_width", "image_height", "margin"), &QRNative::encode_string);
-}
-
-QRNative *QRNative::get_singleton()
-{
-    return singleton;
+    ClassDB::bind_static_method("QRNative", D_METHOD("decode_bytes", "image_data", "image_width", "image_height"), &QRNative::decode_bytes);
+    ClassDB::bind_static_method("QRNative", D_METHOD("decode_image", "image"), &QRNative::decode_image);
+    ClassDB::bind_static_method("QRNative", D_METHOD("encode_bytes", "content", "image_width", "image_height", "margin"), &QRNative::encode_bytes);
+    ClassDB::bind_static_method("QRNative", D_METHOD("encode_string", "content", "image_width", "image_height", "margin"), &QRNative::encode_string);
 }
 
 QRNative::QRNative()
 {
-    ERR_FAIL_COND(singleton != nullptr);
-    singleton = this;
-
     hints.setFormats({BarcodeFormat::QRCode});
 }
 
 QRNative::~QRNative()
 {
-    ERR_FAIL_COND(singleton != this);
-    singleton = nullptr;
 }
 
-QRDecodeResult* QRNative::decode_bytes(PackedByteArray image_data, int image_width, int image_height)
+QRDecodeResult *QRNative::decode_bytes(godot::PackedByteArray image_data, int image_width, int image_height)
 {
     // Create ImageView
     ImageView image{image_data.ptr(), image_width, image_height, ImageFormat::RGB};
@@ -54,26 +41,29 @@ QRDecodeResult* QRNative::decode_bytes(PackedByteArray image_data, int image_wid
     return (QRDecodeResult *)memnew(QRDecodeResult(decode_result->is_valid(), decode_result->get_content()));
 }
 
-QRDecodeResult* QRNative::decode_image(Ref<godot::Image> image)
+QRDecodeResult *QRNative::decode_image(const Ref<godot::Image> image)
 {
+    Ref<godot::Image> d_img = image->duplicate();
+
     // Always convert to FORMAT_RGB8
-    image->convert(godot::Image::FORMAT_RGB8);
-    return decode_bytes(image->get_data(), image->get_width(), image->get_height());
+    d_img->convert(godot::Image::FORMAT_RGB8);
+    return decode_bytes(d_img->get_data(), d_img->get_width(), d_img->get_height());
 }
 
 Ref<godot::Image> QRNative::encode_string(const String &content, int image_width, int image_height, int margin)
 {
+    if (content.length() == 0)
+    {
+        UtilityFunctions::push_error("[QRNATIVE] Content is empty.");
+        return Ref<godot::Image>();
+    }
     ZXing::QRCode::Writer writer = ZXing::QRCode::Writer();
     writer.setEncoding(CharacterSet::UTF8).setMargin(margin);
     Matrix matrix = ToMatrix<uint8_t>(
-        writer.encode(std::wstring(content.wide_string().get_data()), image_width, image_height)
-    );
+        writer.encode(std::wstring(content.wide_string().get_data()), image_width, image_height));
 
-    Ref<godot::Image> image;
-    image.instantiate();
-    // godot::Image* image = (godot::Image*) memnew(godot::Image());
-    
-    image->create(matrix.width(), matrix.height(), false, godot::Image::FORMAT_RGB8);
+    Ref<godot::Image> image = godot::Image::create(matrix.width(), matrix.height(), false, godot::Image::FORMAT_RGB8);
+
     for (int i = 0; i < matrix.width(); i++)
     {
         for (int j = 0; j < matrix.height(); j++)
